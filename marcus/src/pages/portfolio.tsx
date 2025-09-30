@@ -3,6 +3,7 @@ import HeroSection from '../components/HeroSection';
 import EducationSection from '../components/EducationSection';
 import ExperienceSection from '../components/ExperienceSection';
 import ProjectsSection from '../components/ProjectsSection';
+import SkillsSection from '../components/SkillsSection';
 
 export default function Portfolio() {
   return (
@@ -12,6 +13,7 @@ export default function Portfolio() {
       <EducationSection />
       <ExperienceSection />
       <ProjectsSection />
+      <SkillsSection />
     </div>
   );
 }
