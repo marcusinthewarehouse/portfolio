@@ -1,7 +1,10 @@
 
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Cog, Plane, Zap, Bot, Calendar, Users, Award } from 'lucide-react';
+import { Cog, Plane, Zap, Bot, Calendar, Award } from 'lucide-react';
+
+type ProjectStatus = 'Ongoing' | 'Leading' | 'Completed';
+
+
 
 export default function ProjectsSection() {
   const projects = [
@@ -67,7 +70,7 @@ export default function ProjectsSection() {
     }
   ];
 
-  const statusColors = {
+  const statusColors: Record<ProjectStatus, string> = {
     'Ongoing': 'bg-green-500/20 text-green-400 border-green-500/30',
     'Leading': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
     'Completed': 'bg-slate-500/20 text-slate-400 border-slate-500/30'
@@ -112,7 +115,7 @@ export default function ProjectsSection() {
                           <Calendar className="w-4 h-4" />
                           <span className="text-sm">{project.period}</span>
                         </div>
-                        <span className={`px-3 py-1 rounded-full text-xs font-medium border ${statusColors[project.status]}`}>
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium border ${statusColors[project.status as ProjectStatus]}`}>
                           {project.status}
                         </span>
                       </div>
