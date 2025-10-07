@@ -23,9 +23,21 @@ export default function ExperienceSection() {
       type: 'Internship',
       achievements: [
         'Calculated heating and cooling loads for a restaurant using EnergyPro, factoring in square footage of floors, windows, and doors',
-        'Selected HVAC units with adequate capacity for all rooms and designed the duct system layout to ensure coverage and airflow',
-        'Sized ducts to deliver required CFM to each space while accounting for pressure drops over distance, ensuring efficient performance',
+        'Designed HVAC system by selecting units and sizing ducts to ensure proper CFM, airflow, efficiency, coverage, and performance',
         'Used AutoCAD to create the duct design and became familiar with HVAC building codes and standards throughout the project'
+      ]
+    },
+    {
+      title: 'Empanage Engineer',
+      company: 'FLAM (Flying Leathernecks Aviation Museum)',
+      period: 'Apr 2025 - Present',
+      location: 'Remote',
+      type: 'Part-time',
+      achievements: [
+        'Collaborating with engineers and museum staff to restore a WWI-era aircraft, including structural and mechanical components such as wings, fuselage, tail assembly, and engine system',
+        'Assisting in reverse-engineering and 3D printing replica parts to match original specifications and materials as closely as possible',
+        'Supporting the design and analysis of a ceiling suspension system to safely display the aircraft overhead, accounting for load distribution and safety requirements',
+        'Gaining hands-on experience in historical materials research, structural integrity assessment, and aircraft restoration techniques'
       ]
     },
     {
@@ -35,11 +47,10 @@ export default function ExperienceSection() {
       location: 'Freelance',
       type: 'Contract',
       achievements: [
-        'Designed and modeled six custom freestanding bleacher-style structures in SolidWorks, each rated to support 5,000 lbs of live load with a minimum factor of safety of 4.5 (total structure capacity 30,000 lbs)',
-        'Created a modular, treehouse-style viewing platform that fits around palm trees while remaining fully relocatable',
-        'Engineered a 6-foot-tall deck structure with an integrated bar below, allowing guests to lounge above while drinks are served below',
-        'Conducted FEA simulations (stress, strain, displacement) in SolidWorks to verify structural performance and safety margins',
-        'Took detailed on-site measurements and worked closely with the contractor and architect to meet all technical and client requirements'
+        'Designed six custom freestanding bleacher-style structures, each rated for 5,000 lbs live load with a minimum factor of safety of 4.5',
+        'Created a modular, relocatable treehouse-style viewing platform built around palm trees, and engineered a 6-foot-tall deck structure with an integrated serving area for dual-level use',
+        'Performed FEA simulations in SolidWorks (stress, strain, displacement) to validate structural performance and safety margins',
+        'Collected detailed on-site measurements and collaborated closely with the contractor and architect to ensure technical accuracy and meet client requirements'
       ]
     },
     {

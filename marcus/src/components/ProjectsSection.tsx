@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Cog, Plane, Zap, Bot, Calendar, Award } from 'lucide-react';
+import { Plane, Zap, Bot, Calendar, Award } from 'lucide-react';
 
 type ProjectStatus = 'Ongoing' | 'Leading' | 'Completed';
 
@@ -9,35 +9,18 @@ type ProjectStatus = 'Ongoing' | 'Leading' | 'Completed';
 export default function ProjectsSection() {
   const projects = [
     {
-      title: 'FLAM @ UCI - Aircraft Restoration',
-      role: 'Empennage Engineer - Team Member',
-      period: 'Apr 2025 - Present',
-      icon: Plane,
-      status: 'Ongoing',
-      description: 'Restoring a WWI-era aircraft with museum-quality precision',
-      achievements: [
-        'Collaborating with engineers and museum staff to restore structural and mechanical components including wings, fuselage, tail assembly, and engine system',
-        'Assisting in reverse-engineering and 3D printing replica parts to match original specifications and materials as closely as possible',
-        'Supporting the design and analysis of a ceiling suspension system to safely display the aircraft overhead, accounting for load distribution and safety requirements',
-        'Gaining hands-on experience in historical materials research, structural integrity assessment, and aircraft restoration techniques'
-      ],
-      color: 'from-blue-500 to-blue-600'
-    },
-    {
       title: 'UAV Club @ UCI',
       role: 'Board - Project Manager',
       period: 'Mar 2025 - Present',
-      icon: Cog,
+      icon: Plane,
       status: 'Leading',
       description: 'Leading drone design education and hands-on workshops',
       achievements: [
         'Developed a structured curriculum and project timeline for club members, covering drone design, assembly, and flight fundamentals',
         'Led weekly CAD workshops using SolidWorks, focusing on drone and fixed-wing aircraft design, including custom part modeling',
-        'Mentored member teams on building and troubleshooting Tiny Whoops, 5-inch racing drones, and foam or 3D printed fixed-wing planes of varying sizes',
-        'Provided hands-on guidance in FPV (first-person view) drone simulations to help members improve piloting skills before field testing',
-        'Supported 3D printing operations and trained members on the proper usage and maintenance of printers for drone and plane components'
+        'Mentored member teams on building and troubleshooting Tiny Whoops, 5-inch racing drones, and foam or 3D printed fixed-wing planes of varying sizes'
       ],
-      color: 'from-cyan-500 to-cyan-600'
+      color: 'from-blue-500 to-blue-600'
     },
     {
       title: 'Anteater Combat Robotics @ UCI',
@@ -63,8 +46,7 @@ export default function ProjectsSection() {
       description: 'C++ programmed autonomous navigation with sensor fusion',
       achievements: [
         'Developed and programmed an autonomous robot in C++ (Arduino) to navigate a course using a pneumatic propulsion system and servo-based steering',
-        'Developed a sensor fusion system combining magnetometer and reed switch data for dead reckoning, enabling real-time heading correction and accurate trajectory adjustments',
-        'Validated control logic through MATLAB simulation, comparing results using statistical analysis and performance visualization'
+        'Developed a sensor fusion system combining magnetometer and reed switch data for dead reckoning, enabling real-time heading correction and accurate trajectory adjustments'
       ],
       color: 'from-purple-500 to-purple-600'
     }

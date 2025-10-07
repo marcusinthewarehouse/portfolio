@@ -36,16 +36,19 @@ export default function EducationSection() {
                 <p className="text-2xl text-amber-400 font-semibold mb-3">B.S. in Mechanical Engineering</p>
                 <div className="flex items-center gap-3 text-slate-300">
                   <Calendar className="w-5 h-5" />
-                  <span className="text-lg">Sep 2024 - Jun 2026</span>
+                  <span className="text-lg">Sep 2024 - Dec 2026</span>
                   <span className="ml-auto px-4 py-2 rounded-full text-sm font-medium bg-green-500/20 text-green-400 border border-green-500/30">
                     Current
                   </span>
                 </div>
               </div>
             </div>
-            <p className="text-slate-300 leading-relaxed text-lg">
-              Focusing on advanced mechanical systems, robotics, and engineering design with hands-on project experience.
-            </p>
+            <div className="mt-4">
+              <h4 className="text-lg font-semibold text-amber-400 mb-2">Relevant Coursework:</h4>
+              <p className="text-slate-300 leading-relaxed">
+                Circuits, Thermodynamics, Fluid Dynamics A&B, Materials Science, Theory of Machines, Mechanics of Structures, Applied Thermodynamics, Heat and Mass Transfer, Fluid Thermal Lab, Dynamics of Aerospace Vehicles
+              </p>
+            </div>
           </div>
         </motion.div>
 
@@ -65,10 +68,13 @@ export default function EducationSection() {
               <div>
                 <h4 className="text-lg font-bold text-white mb-1">Irvine Valley College</h4>
                 <p className="text-amber-400 font-medium mb-2">Associates in Mathematics, Physics, and Natural Sciences</p>
-                <div className="flex items-center gap-2 text-slate-400">
+                <div className="flex items-center gap-2 text-slate-400 mb-2">
                   <Calendar className="w-4 h-4" />
                   <span className="text-sm">Aug 2021 - May 2024</span>
                 </div>
+                <p className="text-slate-300 text-sm">
+                  <span className="text-amber-400 font-medium">Coursework:</span> Statics, Dynamics, MATLAB, SolidWorks CAD
+                </p>
               </div>
             </div>
           </motion.div>

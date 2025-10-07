@@ -3,29 +3,33 @@ import { Wrench, Users } from 'lucide-react';
 
 export default function SkillsSection() {
   const hardSkills = [
-    'SOLIDWORKS',
-    'AutoCAD', 
+    'SolidWorks',
+    'AutoCAD',
     'MATLAB',
     'FEA',
+    'ANSYS',
+    'Revit',
+    'HVAC',
     'Structural design',
-    'HVAC design',
-    '3D printing',
+    'Basic circuits',
+    '3D Printing',
+    'Soldering',
+    'Manufacturing',
     'Woodwork',
-    'Basic electronics & microcontrollers (e.g., Arduino programming)',
-    'Robotics systems integration'
+    'Machining',
+    'Welding',
+    'JavaScript'
   ];
 
   const softSkills = [
-    'Team leading',
+    'Leadership',
     'Project management',
     'Communication',
-    'Creativity',
+    'Engineering creativity',
     'Critical thinking',
     'Adaptability',
     'Problem solving',
-    'Time management',
-    'Collaboration / teamwork',
-    'Leadership'
+    'Time management'
   ];
 
   return (
