@@ -109,7 +109,7 @@ export default function HeroSection() {
 
       {isViewerOpen && (
         <PDFViewer
-          pdfUrl="/Marcus_Hooshmand_Resume.pdf"
+          pdfUrl="/resume/Marcus_Hooshmand_Resume.pdf"
           isOpen={isViewerOpen}
           onClose={() => setIsViewerOpen(false)}
         />

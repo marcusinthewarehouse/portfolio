@@ -25,18 +25,19 @@ export default function PDFViewer({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70" onClick={handleBackgroundClick}>
-      <div className="relative bg-white rounded-lg overflow-hidden w-[90vw] h-[90vh] flex flex-col">
-        <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+      <div className="relative bg-white rounded-lg overflow-hidden w-[95vw] h-[95vh] max-w-5xl flex flex-col">
+        <div className="absolute top-2 right-2 z-10 flex items-center gap-2">
           <button
             onClick={handleDownload}
-            className="p-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white transition-colors flex items-center gap-2"
+            className="p-1.5 text-sm sm:p-2 sm:text-base rounded-lg bg-amber-500 hover:bg-amber-600 text-white transition-colors flex items-center gap-1 sm:gap-2"
           >
-            <Download size={20} />
-            <span>Download Resume</span>
+            <Download size={16} className="sm:w-5 sm:h-5" />
+            <span className="hidden sm:inline">Download Resume</span>
+            <span className="sm:hidden">Download</span>
           </button>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white transition-colors"
+            className="p-1.5 sm:p-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white transition-colors"
             aria-label="Close"
           >
             ✕
@@ -44,7 +45,7 @@ export default function PDFViewer({
         </div>
         <div className="flex-1">
           <iframe
-            src={pdfUrl}
+            src={`${pdfUrl}#view=FitH`}
             className="w-full h-full border-0"
             title="Resume PDF"
           />
