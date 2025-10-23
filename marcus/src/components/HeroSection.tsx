@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, FileText } from 'lucide-react';
-import Hero3D from './Hero3d';
 import PDFViewer from './PDFViewer';
 
 export default function HeroSection() {
@@ -13,27 +12,26 @@ export default function HeroSection() {
       label: 'Resume',
       value: 'View Resume',
       onClick: () => setIsViewerOpen(true),
-      color: 'text-amber-400'
+      color: 'text-cyan-400'
     },
     {
       icon: Mail,
       label: 'Email',
       value: 'Marcushooshmand@gmail.com',
       href: 'mailto:Marcushooshmand@gmail.com',
-      color: 'text-orange-400'
+      color: 'text-blue-400'
     },
     {
       icon: Phone,
       label: 'Phone',
       value: '(949) 680-6695',
       href: 'tel:(949)680-6695',
-      color: 'text-amber-400'
+      color: 'text-cyan-400'
     }
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-      <Hero3D />
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900/85">
       
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <motion.div
@@ -67,7 +65,7 @@ export default function HeroSection() {
                 {info.onClick ? (
                   <button
                     onClick={info.onClick}
-                    className="w-full flex items-center gap-3 p-4 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300 h-full"
+                    className="w-full flex items-center gap-3 p-4 bg-gray-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300 h-full"
                   >
                     <div className={`w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center flex-shrink-0`}>
                       <info.icon className={`w-5 h-5 ${info.color}`} />
@@ -80,7 +78,7 @@ export default function HeroSection() {
                 ) : (
                   <a
                     href={info.href}
-                    className="flex items-center gap-3 p-4 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300 h-full"
+                    className="flex items-center gap-3 p-4 bg-gray-800/50 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300 h-full"
                   >
                     <div className={`w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center flex-shrink-0`}>
                       <info.icon className={`w-5 h-5 ${info.color}`} />

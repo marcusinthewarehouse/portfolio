@@ -69,12 +69,12 @@ export default function ExperienceSection() {
 
   const typeColors: Record<ExperienceType, string> = {
     Internship: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-    Contract: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-    'Part-time': 'bg-amber-500/20 text-amber-400 border-amber-500/30'
+    Contract: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
+    'Part-time': 'bg-sky-500/20 text-sky-400 border-sky-500/30'
   };
 
   return (
-    <section id="experience" className="py-20 bg-slate-900">
+    <section id="experience" className="py-20 bg-gray-900/85">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -96,17 +96,17 @@ export default function ExperienceSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group relative p-8 bg-slate-900/30 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:shadow-lg hover:shadow-slate-800/20"
+              className="group relative p-8 bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:shadow-lg hover:shadow-slate-800/20"
             >
               <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                 <div className="lg:w-1/3">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-14 h-14 bg-gradient-to-r from-amber-400 to-orange-400 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 via-blue-500 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-cyan-500/40">
                       <Briefcase className="w-7 h-7 text-white" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold text-white mb-1">{exp.title}</h3>
-                      <p className="text-lg text-amber-400 font-semibold mb-2">{exp.company}</p>
+                      <p className="text-lg text-cyan-400 font-semibold mb-2">{exp.company}</p>
                       <div className="flex flex-wrap gap-2 mb-2">
                         <div className="flex items-center gap-1 text-slate-400">
                           <Calendar className="w-4 h-4" />
@@ -135,7 +135,7 @@ export default function ExperienceSection() {
                         viewport={{ once: true }}
                         className="flex items-start gap-3 text-slate-300"
                       >
-                        <ChevronRight className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
+                        <ChevronRight className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
                         <span className="leading-relaxed">{achievement}</span>
                       </motion.li>
                     ))}
