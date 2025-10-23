@@ -1,7 +1,7 @@
 // React import not required with the new JSX transform
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, Calendar } from 'lucide-react';
+import { Award, Calendar } from 'lucide-react';
 import ImageViewer from './ImageViewer';
 
 export default function EducationSection() {
@@ -31,20 +31,15 @@ export default function EducationSection() {
           className="mb-12"
         >
           <div className="group relative p-8 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 backdrop-blur-sm rounded-2xl border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-400/20">
-            <div className="flex items-start gap-6 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 via-blue-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-cyan-500/50">
-                <GraduationCap className="w-9 h-9 text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-3xl font-bold text-white mb-3">University of California, Irvine</h3>
-                <p className="text-2xl text-cyan-400 font-semibold mb-3">B.S. in Mechanical Engineering</p>
-                <div className="flex items-center gap-3 text-slate-300">
-                  <Calendar className="w-5 h-5" />
-                  <span className="text-lg">Sep 2024 - Dec 2026</span>
-                  <span className="ml-auto px-4 py-2 rounded-full text-sm font-medium bg-green-500/20 text-green-400 border border-green-500/30">
-                    Current
-                  </span>
-                </div>
+            <div className="mb-6">
+              <h3 className="text-3xl font-bold text-white mb-3">University of California, Irvine</h3>
+              <p className="text-2xl text-cyan-400 font-semibold mb-3">B.S. in Mechanical Engineering</p>
+              <div className="flex items-center gap-3 text-slate-300">
+                <Calendar className="w-5 h-5" />
+                <span className="text-lg">Sep 2024 - Dec 2026</span>
+                <span className="ml-auto px-4 py-2 rounded-full text-sm font-medium bg-green-500/20 text-green-400 border border-green-500/30">
+                  Current
+                </span>
               </div>
             </div>
             <div className="mt-4">
@@ -65,21 +60,16 @@ export default function EducationSection() {
             viewport={{ once: true }}
             className="p-6 bg-gray-800/40 backdrop-blur-sm rounded-xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300"
           >
-            <div className="flex items-start gap-4 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-cyan-500/30">
-                <GraduationCap className="w-6 h-6 text-white" />
+            <div className="mb-4">
+              <h4 className="text-lg font-bold text-white mb-1">Irvine Valley College</h4>
+              <p className="text-cyan-400 font-medium mb-2">Associates in Mathematics, Physics, and Natural Sciences</p>
+              <div className="flex items-center gap-2 text-slate-400 mb-2">
+                <Calendar className="w-4 h-4" />
+                <span className="text-sm">Aug 2021 - May 2024</span>
               </div>
-              <div>
-                <h4 className="text-lg font-bold text-white mb-1">Irvine Valley College</h4>
-                <p className="text-cyan-400 font-medium mb-2">Associates in Mathematics, Physics, and Natural Sciences</p>
-                <div className="flex items-center gap-2 text-slate-400 mb-2">
-                  <Calendar className="w-4 h-4" />
-                  <span className="text-sm">Aug 2021 - May 2024</span>
-                </div>
-                <p className="text-slate-300 text-sm">
-                  <span className="text-cyan-400 font-medium">Coursework:</span> Statics, Dynamics, MATLAB, SolidWorks CAD
-                </p>
-              </div>
+              <p className="text-slate-300 text-sm">
+                <span className="text-cyan-400 font-medium">Coursework:</span> Statics, Dynamics, MATLAB, SolidWorks CAD
+              </p>
             </div>
           </motion.div>
 

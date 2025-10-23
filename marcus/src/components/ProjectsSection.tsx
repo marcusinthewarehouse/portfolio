@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Plane, Zap, Bot, Calendar, Award } from 'lucide-react';
+import { Calendar, Award } from 'lucide-react';
 import GalleryViewer from './GalleryViewer';
 
 type ProjectStatus = 'Ongoing' | 'Leading' | 'Completed';
@@ -9,6 +9,7 @@ type ProjectStatus = 'Ongoing' | 'Leading' | 'Completed';
 
 export default function ProjectsSection() {
   const [aceViewerOpen, setAceViewerOpen] = useState(false);
+  const [autonomousViewerOpen, setAutonomousViewerOpen] = useState(false);
 
   const aceImages = [
     '/pictures/ACE/MainPhoto/CADofRobot.png',
@@ -19,12 +20,19 @@ export default function ProjectsSection() {
     '/pictures/ACE/RestOfPhotos/entireAcePhoto_5.jpg'
   ];
 
+  const autonomousImages = [
+    '/pictures/AutonomousRobot/MainPhoto/main photo.png',
+    '/pictures/AutonomousRobot/ExtraPhotos/RealRobot_1.png',
+    '/pictures/AutonomousRobot/ExtraPhotos/CADUnderside_2.png',
+    '/pictures/AutonomousRobot/ExtraPhotos/RealUnderside_3.png',
+    '/pictures/AutonomousRobot/ExtraPhotos/RealRobotExtra_4.png'
+  ];
+
   const projects = [
     {
       title: 'UAV Club @ UCI',
       role: 'Board - Project Manager',
       period: 'Mar 2025 - Present',
-      icon: Plane,
       status: 'Leading',
       description: 'Leading drone design education and hands-on workshops',
       achievements: [
@@ -38,7 +46,6 @@ export default function ProjectsSection() {
       title: 'Anteater Combat Robotics @ UCI',
       role: 'Team Lead',
       period: 'Sep 2024 - Feb 2025',
-      icon: Zap,
       status: 'Completed',
       description: 'Custom combat robot design and fabrication under 1 lb weight limit',
       achievements: [
@@ -53,7 +60,6 @@ export default function ProjectsSection() {
       title: 'Autonomous Robot Project',
       role: 'Software Lead',
       period: 'Jan 2025 - Mar 2025',
-      icon: Bot,
       status: 'Completed',
       description: 'C++ programmed autonomous navigation with sensor fusion',
       achievements: [
@@ -100,24 +106,19 @@ export default function ProjectsSection() {
                 <div className="flex flex-col lg:flex-row gap-8">
                   {/* Left side - Info (2/3) */}
                   <div className="lg:w-2/3">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${project.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <project.icon className="w-7 h-7 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                        <p className="text-lg text-cyan-400 font-semibold mb-3">{project.role}</p>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          <div className="flex items-center gap-1 text-gray-400">
-                            <Calendar className="w-4 h-4" />
-                            <span className="text-sm">{project.period}</span>
-                          </div>
-                          <span className={`px-3 py-1 rounded-full text-xs font-medium border ${statusColors[project.status as ProjectStatus]}`}>
-                            {project.status}
-                          </span>
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                      <p className="text-lg text-cyan-400 font-semibold mb-3">{project.role}</p>
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        <div className="flex items-center gap-1 text-gray-400">
+                          <Calendar className="w-4 h-4" />
+                          <span className="text-sm">{project.period}</span>
                         </div>
-                        <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium border ${statusColors[project.status as ProjectStatus]}`}>
+                          {project.status}
+                        </span>
                       </div>
+                      <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
                     </div>
                     
                     {/* Achievements */}
@@ -166,28 +167,89 @@ export default function ProjectsSection() {
                     </div>
                   </div>
                 </div>
+              ) : project.title === 'Autonomous Robot Project' ? (
+                // Autonomous Robot layout with photos
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Left side - Info (2/3) */}
+                  <div className="lg:w-2/3">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                      <p className="text-lg text-cyan-400 font-semibold mb-3">{project.role}</p>
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        <div className="flex items-center gap-1 text-gray-400">
+                          <Calendar className="w-4 h-4" />
+                          <span className="text-sm">{project.period}</span>
+                        </div>
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium border ${statusColors[project.status as ProjectStatus]}`}>
+                          {project.status}
+                        </span>
+                      </div>
+                      <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
+                    </div>
+                    
+                    {/* Achievements */}
+                    <div className="grid gap-4">
+                      {project.achievements.map((achievement, achIndex) => (
+                        <motion.div
+                          key={achIndex}
+                          initial={{ opacity: 0, x: 20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: achIndex * 0.1 }}
+                          viewport={{ once: true }}
+                          className="flex items-start gap-3 p-4 bg-gray-800/30 rounded-lg border border-gray-700/30"
+                        >
+                          <Award className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-gray-300 leading-relaxed">{achievement}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right side - Photo Grid (1/3) */}
+                  <div className="lg:w-1/3">
+                    <div className="sticky top-4">
+                      <h4 className="text-lg font-semibold text-white mb-4">Photo Gallery</h4>
+                      <button
+                        onClick={() => setAutonomousViewerOpen(true)}
+                        className="group/gallery w-full"
+                      >
+                        <div className="bg-gray-800/30 rounded-lg border border-gray-700/30 hover:border-cyan-400 transition-all duration-300 overflow-hidden">
+                          {/* Main photo - taller aspect ratio */}
+                          <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
+                            <img
+                              src={autonomousImages[0]}
+                              alt="Autonomous Robot Main"
+                              className="w-full h-full object-cover group-hover/gallery:scale-110 transition-transform duration-300"
+                            />
+                          </div>
+                          {/* Photo count */}
+                          <div className="p-4 text-center">
+                            <span className="text-cyan-400 font-medium text-sm">
+                              +{autonomousImages.length - 1} more photos - Click to view all
+                            </span>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               ) : (
                 // Default layout for other projects
                 <div className="flex flex-col lg:flex-row gap-8">
                   <div className="lg:w-1/3">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${project.color} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <project.icon className="w-7 h-7 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                        <p className="text-lg text-cyan-400 font-semibold mb-3">{project.role}</p>
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          <div className="flex items-center gap-1 text-gray-400">
-                            <Calendar className="w-4 h-4" />
-                            <span className="text-sm">{project.period}</span>
-                          </div>
-                          <span className={`px-3 py-1 rounded-full text-xs font-medium border ${statusColors[project.status as ProjectStatus]}`}>
-                            {project.status}
-                          </span>
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                      <p className="text-lg text-cyan-400 font-semibold mb-3">{project.role}</p>
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        <div className="flex items-center gap-1 text-gray-400">
+                          <Calendar className="w-4 h-4" />
+                          <span className="text-sm">{project.period}</span>
                         </div>
-                        <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium border ${statusColors[project.status as ProjectStatus]}`}>
+                          {project.status}
+                        </span>
                       </div>
+                      <p className="text-gray-300 text-sm leading-relaxed">{project.description}</p>
                     </div>
                   </div>
                 
@@ -219,6 +281,13 @@ export default function ProjectsSection() {
           images={aceImages}
           isOpen={aceViewerOpen}
           onClose={() => setAceViewerOpen(false)}
+        />
+
+        {/* Autonomous Robot Gallery Viewer */}
+        <GalleryViewer
+          images={autonomousImages}
+          isOpen={autonomousViewerOpen}
+          onClose={() => setAutonomousViewerOpen(false)}
         />
       </div>
     </section>

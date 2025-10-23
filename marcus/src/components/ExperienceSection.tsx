@@ -1,6 +1,7 @@
-import { /* React not required with new JSX transform */ } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin, ChevronRight } from 'lucide-react';
+import GalleryViewer from './GalleryViewer';
 
 type ExperienceType = 'Internship' | 'Contract' | 'Part-time';
 
@@ -14,6 +15,35 @@ type Experience = {
 };
 
 export default function ExperienceSection() {
+  const [flamViewerOpen, setFlamViewerOpen] = useState(false);
+  const [pikeViewerOpen, setPikeViewerOpen] = useState(false);
+
+  const flamImages = [
+    '/pictures/FLAM/mainPhoto.jpg', // Main photo - leaning over
+    '/pictures/FLAM/IMG_0545.png',
+    '/pictures/FLAM/IMG_2204.jpg',
+    '/pictures/FLAM/IMG_2208.jpg',
+    '/pictures/FLAM/IMG_2209.jpg',
+    '/pictures/FLAM/IMG_2C14702F-9CE6-447D-AF00-7F0027ECCCA2.jpg',
+    '/pictures/FLAM/IMG_7150.jpg',
+    '/pictures/FLAM/IMG_7488.jpg',
+    '/pictures/FLAM/IMG_7493.jpg',
+    '/pictures/FLAM/IMG_7495.jpg',
+    '/pictures/FLAM/IMG_9774.jpg',
+    '/pictures/FLAM/IMG_F2305037-7206-4AD0-8FFF-BB5E00853029.jpg'
+  ];
+
+  const pikeImages = [
+    '/pictures/PikeBleacher/FULL_ASSEMBLY.png',
+    '/pictures/PikeBleacher/tree/Screenshot 2025-07-22 173417.png',
+    '/pictures/PikeBleacher/tree/Screenshot 2025-07-22 173429.png',
+    '/pictures/PikeBleacher/tree/Screenshot 2025-07-22 173435.png',
+    '/pictures/PikeBleacher/bar/Screenshot 2025-07-22 175611.png',
+    '/pictures/PikeBleacher/bar/Screenshot 2025-07-22 175616.png',
+    '/pictures/PikeBleacher/bar/Screenshot 2025-07-22 175619.png',
+    '/pictures/PikeBleacher/bar/Screenshot 2025-07-22 175846.png'
+  ];
+
   const experiences: Experience[] = [
     {
       title: 'Mechanical Engineering Intern',
@@ -28,7 +58,7 @@ export default function ExperienceSection() {
       ]
     },
     {
-      title: 'Empanage Engineer',
+      title: 'Airframe Engineer',
       company: 'FLAM (Flying Leathernecks Aviation Museum)',
       period: 'Apr 2025 - Present',
       location: 'Remote',
@@ -98,13 +128,143 @@ export default function ExperienceSection() {
               viewport={{ once: true }}
               className="group relative p-8 bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300 hover:shadow-lg hover:shadow-slate-800/20"
             >
-              <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                <div className="lg:w-1/3">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 via-blue-500 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-cyan-500/40">
-                      <Briefcase className="w-7 h-7 text-white" />
+              {/* FLAM with photo gallery */}
+              {exp.company === 'FLAM (Flying Leathernecks Aviation Museum)' ? (
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Left side - Info (2/3) */}
+                  <div className="lg:w-2/3">
+                    <div className="mb-4">
+                      <h3 className="text-2xl font-bold text-white mb-1">{exp.title}</h3>
+                      <p className="text-lg text-cyan-400 font-semibold mb-2">{exp.company}</p>
+                      <div className="flex flex-wrap gap-2 mb-2">
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <Calendar className="w-4 h-4" />
+                          <span className="text-sm">{exp.period}</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <MapPin className="w-4 h-4" />
+                          <span className="text-sm">{exp.location}</span>
+                        </div>
+                      </div>
+                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${typeColors[exp.type]}`}>
+                        {exp.type}
+                      </span>
                     </div>
-                    <div className="flex-1">
+                    <ul className="space-y-3">
+                      {exp.achievements.map((achievement, achIndex) => (
+                        <motion.li
+                          key={achIndex}
+                          initial={{ opacity: 0, x: 20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: achIndex * 0.1 }}
+                          viewport={{ once: true }}
+                          className="flex items-start gap-3 text-slate-300"
+                        >
+                          <ChevronRight className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                          <span className="leading-relaxed">{achievement}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Right side - Photo Grid (1/3) */}
+                  <div className="lg:w-1/3">
+                    <div className="sticky top-4">
+                      <h4 className="text-lg font-semibold text-white mb-4">Photo Gallery</h4>
+                      <button
+                        onClick={() => setFlamViewerOpen(true)}
+                        className="group/gallery w-full"
+                      >
+                        <div className="bg-gray-800/30 rounded-lg border border-gray-700/30 hover:border-cyan-400 transition-all duration-300 overflow-hidden">
+                          <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
+                            <img
+                              src={flamImages[0]}
+                              alt="FLAM Main"
+                              className="w-full h-full object-cover group-hover/gallery:scale-110 transition-transform duration-300"
+                              style={{ objectPosition: 'center center' }}
+                            />
+                          </div>
+                          <div className="p-4 text-center">
+                            <span className="text-cyan-400 font-medium text-sm">
+                              +{flamImages.length - 1} more photos - Click to view all
+                            </span>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : exp.company === 'Freelance Engineering Project' ? (
+                // Pike Bleacher with photo gallery
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Left side - Info (2/3) */}
+                  <div className="lg:w-2/3">
+                    <div className="mb-4">
+                      <h3 className="text-2xl font-bold text-white mb-1">{exp.title}</h3>
+                      <p className="text-lg text-cyan-400 font-semibold mb-2">{exp.company}</p>
+                      <div className="flex flex-wrap gap-2 mb-2">
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <Calendar className="w-4 h-4" />
+                          <span className="text-sm">{exp.period}</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <MapPin className="w-4 h-4" />
+                          <span className="text-sm">{exp.location}</span>
+                        </div>
+                      </div>
+                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${typeColors[exp.type]}`}>
+                        {exp.type}
+                      </span>
+                    </div>
+                    <ul className="space-y-3">
+                      {exp.achievements.map((achievement, achIndex) => (
+                        <motion.li
+                          key={achIndex}
+                          initial={{ opacity: 0, x: 20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: achIndex * 0.1 }}
+                          viewport={{ once: true }}
+                          className="flex items-start gap-3 text-slate-300"
+                        >
+                          <ChevronRight className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                          <span className="leading-relaxed">{achievement}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Right side - Photo Grid (1/3) */}
+                  <div className="lg:w-1/3">
+                    <div className="sticky top-4">
+                      <h4 className="text-lg font-semibold text-white mb-4">Photo Gallery</h4>
+                      <button
+                        onClick={() => setPikeViewerOpen(true)}
+                        className="group/gallery w-full"
+                      >
+                        <div className="bg-gray-800/30 rounded-lg border border-gray-700/30 hover:border-cyan-400 transition-all duration-300 overflow-hidden">
+                          <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
+                            <img
+                              src={pikeImages[0]}
+                              alt="Pike Bleacher Main"
+                              className="w-full h-full object-cover group-hover/gallery:scale-110 transition-transform duration-300"
+                              style={{ objectPosition: '30% center' }}
+                            />
+                          </div>
+                          <div className="p-4 text-center">
+                            <span className="text-cyan-400 font-medium text-sm">
+                              +{pikeImages.length - 1} more photos - Click to view all
+                            </span>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                // Default layout for other experiences
+                <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+                  <div className="lg:w-1/3">
+                    <div className="mb-4">
                       <h3 className="text-2xl font-bold text-white mb-1">{exp.title}</h3>
                       <p className="text-lg text-cyan-400 font-semibold mb-2">{exp.company}</p>
                       <div className="flex flex-wrap gap-2 mb-2">
@@ -122,29 +282,43 @@ export default function ExperienceSection() {
                       </span>
                     </div>
                   </div>
+                  
+                  <div className="lg:w-2/3">
+                    <ul className="space-y-3">
+                      {exp.achievements.map((achievement, achIndex) => (
+                        <motion.li
+                          key={achIndex}
+                          initial={{ opacity: 0, x: 20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: achIndex * 0.1 }}
+                          viewport={{ once: true }}
+                          className="flex items-start gap-3 text-slate-300"
+                        >
+                          <ChevronRight className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                          <span className="leading-relaxed">{achievement}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                
-                <div className="lg:w-2/3">
-                  <ul className="space-y-3">
-                    {exp.achievements.map((achievement, achIndex) => (
-                      <motion.li
-                        key={achIndex}
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: achIndex * 0.1 }}
-                        viewport={{ once: true }}
-                        className="flex items-start gap-3 text-slate-300"
-                      >
-                        <ChevronRight className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                        <span className="leading-relaxed">{achievement}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              )}
             </motion.div>
           ))}
         </div>
+
+        {/* FLAM Gallery Viewer */}
+        <GalleryViewer
+          images={flamImages}
+          isOpen={flamViewerOpen}
+          onClose={() => setFlamViewerOpen(false)}
+        />
+
+        {/* Pike Bleacher Gallery Viewer */}
+        <GalleryViewer
+          images={pikeImages}
+          isOpen={pikeViewerOpen}
+          onClose={() => setPikeViewerOpen(false)}
+        />
       </div>
     </section>
   );

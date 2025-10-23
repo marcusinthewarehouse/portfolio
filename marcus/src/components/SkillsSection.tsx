@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Wrench, Users } from 'lucide-react';
 
 export default function SkillsSection() {
   const hardSkills = [
@@ -56,10 +55,7 @@ export default function SkillsSection() {
             viewport={{ once: true }}
             className="p-8 bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-14 h-14 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
-                <Wrench className="w-7 h-7 text-white" />
-              </div>
+            <div className="mb-6">
               <h3 className="text-2xl font-bold text-white">Technical Skills</h3>
             </div>
             <div className="grid gap-3">
@@ -87,10 +83,7 @@ export default function SkillsSection() {
             viewport={{ once: true }}
             className="p-8 bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-slate-600 transition-all duration-300"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-14 h-14 bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-500 rounded-xl flex items-center justify-center">
-                <Users className="w-7 h-7 text-white" />
-              </div>
+            <div className="mb-6">
               <h3 className="text-2xl font-bold text-white">Professional Skills</h3>
             </div>
             <div className="grid gap-3">
