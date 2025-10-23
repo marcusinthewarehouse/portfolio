@@ -6,8 +6,8 @@ const GEAR_SCALE = 1.65;                  // bigger scene
 
 // polar placement with exact pitch distance + backlash
 function placeMeshed(
-  parent: THREE.Object3D, rpParent: number,
-  child: THREE.Object3D,  rpChild: number,
+  parent: any, rpParent: number,
+  child: any,  rpChild: number,
   angleRad: number, moduleForBacklash: number
 ) {
   const backlash = 0.03 * moduleForBacklash;      // ~3% of module
@@ -186,9 +186,8 @@ export default function Hero3D() {
     camera.position.z = 14;
 
     // Disable all shadows
-    scene.traverse(o => { 
-      const l = o as THREE.Light; 
-      if (l && "castShadow" in l) (l as any).castShadow = false; 
+    scene.traverse((o: any) => { 
+      if (o && "castShadow" in o) o.castShadow = false; 
     });
 
     // Track scroll
