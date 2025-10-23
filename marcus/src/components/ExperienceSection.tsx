@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin, ChevronRight, ExternalLink } from 'lucide-react';
 import GalleryViewer from './GalleryViewer';
 
-type ExperienceType = 'Internship' | 'Contract' | 'Part-time';
+type ExperienceType = 'Internship' | 'Contract' | 'Part-time' | 'Business';
 
 type Experience = {
   title: string;
@@ -17,6 +17,18 @@ type Experience = {
 export default function ExperienceSection() {
   const [flamViewerOpen, setFlamViewerOpen] = useState(false);
   const [pikeViewerOpen, setPikeViewerOpen] = useState(false);
+  const [amazonViewerOpen, setAmazonViewerOpen] = useState(false);
+
+  const amazonImages = [
+    '/pictures/amazon/MainPhoto.png',
+    '/pictures/amazon/Screenshot 2025-10-23 002543.png',
+    '/pictures/amazon/Screenshot 2025-10-23 002600.png',
+    '/pictures/amazon/Screenshot 2025-10-23 002610.png',
+    '/pictures/amazon/Screenshot 2025-10-23 002802.png',
+    '/pictures/amazon/Screenshot 2025-10-23 002835.png',
+    '/pictures/amazon/Screenshot 2025-10-23 002841.png',
+    '/pictures/amazon/Screenshot 2025-10-23 002846.png'
+  ];
 
   const flamImages = [
     '/pictures/FLAM/mainPhoto.jpg', // Main photo - leaning over
@@ -84,15 +96,15 @@ export default function ExperienceSection() {
       ]
     },
     {
-      title: 'Tutor',
-      company: 'Berktree Learning Center',
-      period: 'Jan 2024 - May 2025',
-      location: 'Irvine, CA',
-      type: 'Part-time',
+      title: '3D Printing Design and Manufacturing Business',
+      company: 'Amazon Seller',
+      period: 'Sep 2025 - Present',
+      location: 'Remote',
+      type: 'Business',
       achievements: [
-        'Specializing in math tutoring, covering subjects from Algebra to Calculus and Linear Algebra',
-        'Conducted weekly sessions to help students achieve their academic goals by addressing their most challenging subjects',
-        'Mentored students academically and personally, building strong relationships for better engagement'
+        'Designed, prototyped, and manufactured 3D printed products and listed them for sale on Amazon',
+        'Modeled products in SolidWorks, accounting for tolerances, heat resistance, filament cost, package size, and profitability',
+        'Two products in total have been fully created and are actively listed on Amazon. Total sales are around 300 units as of 10/23'
       ]
     }
   ];
@@ -100,7 +112,8 @@ export default function ExperienceSection() {
   const typeColors: Record<ExperienceType, string> = {
     Internship: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
     Contract: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
-    'Part-time': 'bg-sky-500/20 text-sky-400 border-sky-500/30'
+    'Part-time': 'bg-sky-500/20 text-sky-400 border-sky-500/30',
+    Business: 'bg-purple-500/20 text-purple-400 border-purple-500/30'
   };
 
   return (
@@ -128,8 +141,84 @@ export default function ExperienceSection() {
               viewport={{ once: true }}
               className="group relative p-8 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 backdrop-blur-sm rounded-2xl border border-cyan-400/30 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-400/20"
             >
-              {/* FLAM with photo gallery */}
-              {exp.company === 'FLAM (Flying Leathernecks Aviation Museum)' ? (
+              {/* Amazon Seller with photo gallery */}
+              {exp.company === 'Amazon Seller' ? (
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Left side - Info (2/3) */}
+                  <div className="lg:w-2/3">
+                    <div className="mb-4">
+                      <h3 className="text-2xl font-bold text-white mb-1">{exp.title}</h3>
+                      <p className="text-lg text-cyan-400 font-semibold mb-2">{exp.company}</p>
+                      <div className="flex flex-wrap gap-2 mb-2">
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <Calendar className="w-4 h-4" />
+                          <span className="text-sm">{exp.period}</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <MapPin className="w-4 h-4" />
+                          <span className="text-sm">{exp.location}</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${typeColors[exp.type]}`}>
+                          {exp.type}
+                        </span>
+                        <a
+                          href="https://www.amazon.com/Generic-Funnel-Tamp-Tool-Pax/dp/B0FHJHGT5K"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 rounded-lg border border-cyan-500/30 hover:border-cyan-400 transition-all duration-300 text-sm font-medium group/link"
+                        >
+                          <span>View on Amazon</span>
+                          <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform duration-300" />
+                        </a>
+                      </div>
+                    </div>
+                    <ul className="space-y-3">
+                      {exp.achievements.map((achievement, achIndex) => (
+                        <motion.li
+                          key={achIndex}
+                          initial={{ opacity: 0, x: 20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.5, delay: achIndex * 0.1 }}
+                          viewport={{ once: true }}
+                          className="flex items-start gap-3 text-slate-300"
+                        >
+                          <ChevronRight className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                          <span className="leading-relaxed">{achievement}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Right side - Photo Grid (1/3) */}
+                  <div className="lg:w-1/3">
+                    <div className="sticky top-4">
+                      <h4 className="text-lg font-semibold text-white mb-4">Photo Gallery</h4>
+                      <button
+                        onClick={() => setAmazonViewerOpen(true)}
+                        className="group/gallery w-full"
+                      >
+                        <div className="bg-gray-800/30 rounded-lg border border-gray-700/30 hover:border-cyan-400 transition-all duration-300 overflow-hidden">
+                          <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
+                            <img
+                              src={amazonImages[0]}
+                              alt="Amazon Products Main"
+                              className="w-full h-full object-cover group-hover/gallery:scale-110 transition-transform duration-300"
+                              style={{ objectPosition: 'center center' }}
+                            />
+                          </div>
+                          <div className="p-4 text-center">
+                            <span className="text-cyan-400 font-medium text-sm">
+                              +{amazonImages.length - 1} more photos - Click to view all
+                            </span>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : exp.company === 'FLAM (Flying Leathernecks Aviation Museum)' ? (
                 <div className="flex flex-col lg:flex-row gap-8">
                   {/* Left side - Info (2/3) */}
                   <div className="lg:w-2/3">
@@ -305,6 +394,13 @@ export default function ExperienceSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Amazon Gallery Viewer */}
+        <GalleryViewer
+          images={amazonImages}
+          isOpen={amazonViewerOpen}
+          onClose={() => setAmazonViewerOpen(false)}
+        />
 
         {/* FLAM Gallery Viewer */}
         <GalleryViewer
